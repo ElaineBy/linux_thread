@@ -9,7 +9,7 @@ pthread_mutex_t mut_input_flag = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t mut_cnt = PTHREAD_MUTEX_INITIALIZER;
 
 int cnt = 0;
-int input_flag = 0;
+int input_flag = 1;
 
 /* global data structure*/
 struct shit{
@@ -82,8 +82,14 @@ void* a3(void* args){
 }
 
 void* io(void* args){
-    cin >> s.initial;
+    
     //cout << s.initial << endl;
+    if((cin >> s.initial) == EOF){
+        input_flag = 0;
+        mulock(UNLOCK,&mut_input_flag);
+        mulock(UNLOCK,&mut_input);
+        return;
+    }
     
     mulock(UNLOCK,&mut_input);
     
@@ -112,9 +118,11 @@ void* io(void* args){
 
 int main(){
     
+    while(true){
     
     // ensure that mut_input and mut_output will not be locked until the io thread terminates
     mulock(LOCK,&mut_input_flag);
+        if(!input_flag) break;
         
     mulock(LOCK,&mut_input);
     mulock(LOCK,&mut_output);
@@ -158,6 +166,8 @@ int main(){
     if (pthread_join(thread_io,&res_a3) == -1){
         puts("fail to recollect thread_io");
         exit(1);
+    }
+        
     }
     
             
