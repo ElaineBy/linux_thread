@@ -14,7 +14,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 
 add_subdirectory(helper)
 
-add_executable(input mutex.cpp)
+add_executable(input reader_writer.cpp)
 # link minisat library with the main executable
 
 target_link_libraries(input helper ${CMAKE_THREAD_LIBS_INIT})
