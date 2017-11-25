@@ -94,7 +94,7 @@ void* io(void* args){
         std::getline(std::cin, s.initial);
     }else{
         input_flag = 0;
-        return;
+        return NULL;
     }
       
     
