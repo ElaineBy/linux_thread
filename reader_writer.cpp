@@ -94,7 +94,7 @@ void* io(void* args){
     if(!cin.eof()){
         string str;
         
-        std::getline(std::cin, str);
+        str << cin;
         if(str == "") {
             input_flag = 0;
             return NULL;
