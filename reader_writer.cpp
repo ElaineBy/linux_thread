@@ -33,6 +33,7 @@ void reset(){
 
 //a1 is to mutiply initial by 1
 void* a1(void* args){
+    cout << "stuck here  a1" << endl;
     mulock(LOCK,&mut_input);
     s.i1 = s.initial * 1;
     cout << "a1:" << s.i1 << endl;
@@ -48,6 +49,7 @@ void* a1(void* args){
 
 //a2 is to mutiply initial by 2
 void* a2(void* args){
+    cout << "stuck here  a2" << endl;
     mulock(LOCK,&mut_input);
     s.i2 = s.initial * 2;
     cout << "a2:" << s.i2 << endl;
@@ -62,6 +64,7 @@ void* a2(void* args){
 
 //a3 is to mutiply initial by 3
 void* a3(void* args){
+    cout << "stuck here  a3" << endl;
     mulock(LOCK,&mut_input);
     s.i3 = s.initial * 3;
     cout << "a3:" << s.i3 << endl;
@@ -79,6 +82,7 @@ void* io(void* args){
     
     mulock(UNLOCK,&mut_input);
     
+    cout << "stuck here  0" << endl;
     mulock(LOCK,&mut_output);
     
     
