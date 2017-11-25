@@ -95,6 +95,7 @@ void* io(void* args){
     //start your input here
     if(!cin.eof()){
         string str;
+        cout << "input:" << str << endl;
         std::getline(std::cin, str);
         s.initial = atoi(str.c_str());
     }else{
@@ -181,10 +182,10 @@ int main(){
         exit(1);
     }
     if(!input_flag){
-        pthread_kill(thread_a1, 0);
-        pthread_kill(thread_a2, 0);
-        pthread_kill(thread_a3, 0);
-        pthread_kill(thread_io, 0);
+//        pthread_kill(thread_a1, 0);
+//        pthread_kill(thread_a2, 0);
+//        pthread_kill(thread_a3, 0);
+//        pthread_kill(thread_io, 0);
         break;
         
     }
