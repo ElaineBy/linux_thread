@@ -65,6 +65,7 @@ void* io(void* args){
 }
 
 int main(){
+    while(1){
     mulock(LOCK,&mut_input);
     
     pthread_t thread_a1,thread_a2,thread_a3,thread_io;
@@ -87,7 +88,8 @@ int main(){
         puts("fail to create pthread thread_a3");
         exit(1);
     }
-        
+    }
+    
             
 
 }
