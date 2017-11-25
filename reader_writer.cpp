@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <iostream>
 #include <sstream>
+#include <cstdlib>
 using namespace std;
 
 pthread_mutex_t mut_output = PTHREAD_MUTEX_INITIALIZER;
@@ -92,7 +93,9 @@ void* io(void* args){
     
     //start your input here
     if(!cin.eof()){
-        std::getline(std::cin, s.initial);
+        string str;
+        std::getline(std::cin, str);
+        s.initial = atoi(str.c_str());
     }else{
         input_flag = 0;
         return NULL;
