@@ -93,7 +93,7 @@ int main(){
     mulock(LOCK,&mut_output);
     
     pthread_t thread_a1,thread_a2,thread_a3,thread_io;
-    
+    void* res_a1,res_a2,res_a3;
     
     if (pthread_create(&thread_io, NULL, &io, (void *)NULL) ){
         puts("fail to create pthread thread_a3");
@@ -104,7 +104,7 @@ int main(){
         puts("fail to create pthread thread_a1");
         exit(1);
     }
-    if (pthread_join(thread_a1,&(void*)NULL) == -1){
+    if (pthread_join(thread_a1,&res_a1) == -1){
         puts("fail to recollect thread_a1");
         exit(1);
     }
@@ -114,7 +114,7 @@ int main(){
         exit(1);
     }
         
-    if (pthread_join(thread_a2,&(void*)NULL) == -1){
+    if (pthread_join(thread_a2,&res_a2) == -1){
         puts("fail to recollect thread_a2");
         exit(1);
     }
@@ -124,7 +124,7 @@ int main(){
         exit(1);
     }
         
-    if (pthread_join(thread_a3,&(void*)NULL) == -1){
+    if (pthread_join(thread_a3,&res_a3) == -1){
         puts("fail to recollect thread_a3");
         exit(1);
     }
