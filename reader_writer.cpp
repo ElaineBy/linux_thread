@@ -94,7 +94,7 @@ void* io(void* args){
     if(!cin.eof()){
         string str;
         
-        str << cin;
+        cin >> str;
         if(str == "") {
             input_flag = 0;
             return NULL;
