@@ -36,13 +36,11 @@ void reset(){
 
 //a1 is to mutiply initial by 1
 void* a1(void* args){
-    //cout << "stuck here  a1" << endl;
+    
     mulock(LOCK,&mut_input);
     
     //algorithm
     s.i1 = s.initial * 1;
-    //cout << "a1:" << s.i1 << endl;
-    
     
     mulock(LOCK,&mut_cnt);
     cnt++;
@@ -56,7 +54,7 @@ void* a1(void* args){
 
 //a2 is to mutiply initial by 2
 void* a2(void* args){
-    //cout << "stuck here  a2" << endl;
+    
     mulock(LOCK,&mut_input);
     
     //algorithm
@@ -74,7 +72,7 @@ void* a2(void* args){
 
 //a3 is to mutiply initial by 3
 void* a3(void* args){
-    //cout << "stuck here  a3" << endl;
+    
     mulock(LOCK,&mut_input);
     
     //algorithm
@@ -150,25 +148,18 @@ int main(){
     void* res_a1,*res_a2,*res_a3;
     
     
-    
+    // 3 algorithms run concurrently
     if (pthread_create(&thread_a1, NULL, &a1, (void *)NULL) == -1) {
         puts("fail to create pthread thread_a1");
         exit(1);
     }
-//    if (pthread_join(thread_a1,&res_a1) == -1){
-//        puts("fail to recollect thread_a1");
-//        exit(1);
-//    }
+
     
     if (pthread_create(&thread_a2, NULL, &a2, (void *)NULL) == -1) {
         puts("fail to create pthread thread_a2");
         exit(1);
     }
-        
-//    if (pthread_join(thread_a2,&res_a2) == -1){
-//        puts("fail to recollect thread_a2");
-//        exit(1);
-//    }
+
     
     if (pthread_create(&thread_a3, NULL, &a3, (void *)NULL) == -1){
         puts("fail to create pthread thread_a3");
@@ -182,15 +173,15 @@ int main(){
         exit(1);
     }
     
+    // wait for io to terminate
     if (pthread_join(thread_io,&res_a3) == -1){
         puts("fail to recollect thread_io");
         exit(1);
     }
+        
+    // if io terminated, check if it's eof
     if(!input_flag){
-//        pthread_kill(thread_a1, 0);
-//        pthread_kill(thread_a2, 0);
-//        pthread_kill(thread_a3, 0);
-//        pthread_kill(thread_io, 0);
+        //jump out of while loop
         break;
         
     }
