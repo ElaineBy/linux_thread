@@ -82,6 +82,7 @@ void* io(void* args){
     mulock(LOCK,&mut_output);
     
     mulock(LOCK,&mut_cnt);
+    cout << "set counter 0" << endl;
     cnt = 0;
     mulock(UNLOCK,&mut_cnt);
     
@@ -95,12 +96,12 @@ int main(){
     pthread_t thread_a1,thread_a2,thread_a3,thread_io;
     void* res_a1,*res_a2,*res_a3;
     
-    if (pthread_create(&thread_io, NULL, &io, (void *)NULL) ){
+    if (pthread_create(&thread_io, NULL, &io, (void *)NULL) == -1){
         puts("fail to create pthread thread_a3");
         exit(1);
     }
     
-    if (pthread_create(&thread_a1, NULL, &a1, (void *)NULL)) {
+    if (pthread_create(&thread_a1, NULL, &a1, (void *)NULL) == -1) {
         puts("fail to create pthread thread_a1");
         exit(1);
     }
@@ -109,7 +110,7 @@ int main(){
         exit(1);
     }
         
-    if (pthread_create(&thread_a2, NULL, &a2, (void *)NULL)) {
+    if (pthread_create(&thread_a2, NULL, &a2, (void *)NULL) == -1) {
         puts("fail to create pthread thread_a2");
         exit(1);
     }
@@ -119,7 +120,7 @@ int main(){
         exit(1);
     }
         
-    if (pthread_create(&thread_a3, NULL, &a3, (void *)NULL) ){
+    if (pthread_create(&thread_a3, NULL, &a3, (void *)NULL) == -1){
         puts("fail to create pthread thread_a3");
         exit(1);
     }
