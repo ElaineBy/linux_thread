@@ -179,9 +179,14 @@ int main(){
         puts("fail to recollect thread_io");
         exit(1);
     }
-        if(!input_flag){
-            break;
-        }
+    if(!input_flag){
+        pthread_kill(thread_a1, 0)
+        pthread_kill(thread_a2, 0)
+        pthread_kill(thread_a3, 0)
+        pthread_kill(thread_io, 0)
+        break;
+        
+    }
         
     }
     
