@@ -95,8 +95,9 @@ void* io(void* args){
     //start your input here
     if(!cin.eof()){
         string str;
-        cout << "input:" << str << endl;
+        
         std::getline(std::cin, str);
+        cout << "input:" << str << endl;
         s.initial = atoi(str.c_str());
     }else{
         input_flag = 0;
