@@ -1,6 +1,6 @@
-#include "input.h"
 #include "helper.h"
-#inlcude<iostream>
+#include <cstdio>
+#inlcude <iostream>
 using namespace std;
 
 pthread_mutex_t mut_output = PTHREAD_MUTEX_INITIALIZER;
