@@ -97,6 +97,10 @@ void* io(void* args){
         string str;
         
         std::getline(std::cin, str);
+        if(str == "") {
+            input_flag = 0;
+            return NULL;
+        }
         cout << "input:" << str << endl;
         s.initial = atoi(str.c_str());
     }else{
