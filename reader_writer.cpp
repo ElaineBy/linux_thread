@@ -91,7 +91,7 @@ void* io(void* args){
     mulock(LOCK,&mut_output);
     
     mulock(LOCK,&mut_cnt);
-    //cout << "set counter 0" << endl;
+    cout << "set counter 0" << endl;
     cnt = 0;
     mulock(UNLOCK,&mut_cnt);
     
