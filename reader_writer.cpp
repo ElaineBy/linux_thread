@@ -86,7 +86,7 @@ void* io(void* args){
 int main(){
     while(1){
     mulock(LOCK,&mut_input);
-    mulock(UNLOCK,&mut_output);
+    mulock(LOCK,&mut_output);
     
     pthread_t thread_a1,thread_a2,thread_a3,thread_io;
     
