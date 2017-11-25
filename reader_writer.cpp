@@ -90,14 +90,15 @@ void* io(void* args){
     //cout << "stuck here  0" << endl;
     mulock(LOCK,&mut_output);
     
+    cout << "a1:" << s.i1 << endl;
+    cout << "a2:" << s.i2 << endl;
+    cout << "a3:" << s.i3 << endl;
+
     mulock(LOCK,&mut_cnt);
     cout << "set counter 0" << endl;
     cnt = 0;
     mulock(UNLOCK,&mut_cnt);
     
-    cout << "a1:" << s.i1 << endl;
-    cout << "a2:" << s.i2 << endl;
-    cout << "a3:" << s.i3 << endl;
     
     
     mulock(UNLOCK,&mut_output);
