@@ -103,12 +103,16 @@ void* io(void* args){
     
     mulock(UNLOCK,&mut_output);
     
+    mulock(UNLOCK,&mut_input_flag);
+    
     
     
 }
 
 int main(){
     while(1){
+        
+    mulock(LOCK,&mut_input_flag);
     mulock(LOCK,&mut_input);
     mulock(LOCK,&mut_output);
     
