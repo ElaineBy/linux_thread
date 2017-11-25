@@ -88,7 +88,7 @@ void* io(void* args){
         input_flag = 0;
         mulock(UNLOCK,&mut_input_flag);
         mulock(UNLOCK,&mut_input);
-        return;
+        return NULL;
     }
     
     mulock(UNLOCK,&mut_input);
