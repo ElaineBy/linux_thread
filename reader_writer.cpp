@@ -103,6 +103,7 @@ void* io(void* args){
     
     mulock(UNLOCK,&mut_output);
     
+    
     mulock(UNLOCK,&mut_input_flag);
     
     
@@ -110,9 +111,11 @@ void* io(void* args){
 }
 
 int main(){
-    while(1){
-        
+    
+    
+    // ensure that mut_input and mut_output will not be locked until the io thread terminates
     mulock(LOCK,&mut_input_flag);
+        
     mulock(LOCK,&mut_input);
     mulock(LOCK,&mut_output);
     
@@ -152,7 +155,7 @@ int main(){
         puts("fail to recollect thread_a3");
         exit(1);
     }
-    }
+    
     
             
 
