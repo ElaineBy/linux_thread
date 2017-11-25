@@ -86,6 +86,10 @@ void* io(void* args){
     cnt = 0;
     mulock(UNLOCK,&mut_cnt);
     
+    mulock(UNLOCK,&mut_output);
+    
+    
+    
 }
 
 int main(){
