@@ -35,6 +35,8 @@ void reset(){
 void* a1(void* args){
     //cout << "stuck here  a1" << endl;
     mulock(LOCK,&mut_input);
+    
+    //algorithm
     s.i1 = s.initial * 1;
     //cout << "a1:" << s.i1 << endl;
     
@@ -53,8 +55,10 @@ void* a1(void* args){
 void* a2(void* args){
     //cout << "stuck here  a2" << endl;
     mulock(LOCK,&mut_input);
+    
+    //algorithm
     s.i2 = s.initial * 2;
-    //cout << "a2:" << s.i2 << endl;
+    
     mulock(LOCK,&mut_cnt);
     cnt++;
     if(cnt == 3){
@@ -69,8 +73,10 @@ void* a2(void* args){
 void* a3(void* args){
     //cout << "stuck here  a3" << endl;
     mulock(LOCK,&mut_input);
+    
+    //algorithm
     s.i3 = s.initial * 3;
-    //cout << "a3:" << s.i3 << endl;
+    
     
     mulock(LOCK,&mut_cnt);
     cnt++;
@@ -83,15 +89,21 @@ void* a3(void* args){
 
 void* io(void* args){
     
-    //cout << s.initial << endl;
-    cin >> s.initial;
+    //start your input here
+    if(!cin.eof()){
+        std::getline(std::cin, s.initial);
+    }else{
+        input_flag = 0;
+        return;
+    }
       
     
     mulock(UNLOCK,&mut_input);
     
-    //cout << "stuck here  0" << endl;
+    
     mulock(LOCK,&mut_output);
     
+    // start your output here
     cout << "a1:" << s.i1 << endl;
     cout << "a2:" << s.i2 << endl;
     cout << "a3:" << s.i3 << endl;
@@ -163,6 +175,9 @@ int main(){
         puts("fail to recollect thread_io");
         exit(1);
     }
+        if(!input_flag){
+            break;
+        }
         
     }
     
