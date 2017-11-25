@@ -127,7 +127,7 @@ void* io(void* args){
     mulock(UNLOCK,&mut_output);
     
     
-    mulock(UNLOCK,&mut_input_flag);
+    
     
     
     
@@ -138,7 +138,6 @@ int main(){
     while(true){
     
     // ensure that mut_input and mut_output will not be locked until the io thread terminates
-    mulock(LOCK,&mut_input_flag);
 
         
     mulock(LOCK,&mut_input);
