@@ -93,7 +93,7 @@ int main(){
     mulock(LOCK,&mut_output);
     
     pthread_t thread_a1,thread_a2,thread_a3,thread_io;
-    void* res_a1,res_a2,res_a3;
+    void* res_a1,*res_a2,*res_a3;
     
     if (pthread_create(&thread_io, NULL, &io, (void *)NULL) ){
         puts("fail to create pthread thread_a3");
