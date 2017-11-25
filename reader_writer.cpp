@@ -84,12 +84,8 @@ void* a3(void* args){
 void* io(void* args){
     
     //cout << s.initial << endl;
-    if((cin >> s.initial) == EOF){
-        input_flag = 0;
-        mulock(UNLOCK,&mut_input_flag);
-        mulock(UNLOCK,&mut_input);
-        return NULL;
-    }
+    cin >> s.initial;
+      
     
     mulock(UNLOCK,&mut_input);
     
@@ -122,7 +118,7 @@ int main(){
     
     // ensure that mut_input and mut_output will not be locked until the io thread terminates
     mulock(LOCK,&mut_input_flag);
-        if(!input_flag) break;
+
         
     mulock(LOCK,&mut_input);
     mulock(LOCK,&mut_output);
