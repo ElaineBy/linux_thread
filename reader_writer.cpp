@@ -39,10 +39,12 @@ void* a1(void* args){
     cout << "a1:" << s.i1 << endl;
     
     
+    mulock(LOCK,&mut_cnt);
     cnt++;
     if(cnt == 3){
         mulock(UNLOCK,&mut_output);
     }
+    mulock(UNLOCK,&mut_cnt);
     
     mulock(UNLOCK,&mut_input);
 }
@@ -53,11 +55,12 @@ void* a2(void* args){
     mulock(LOCK,&mut_input);
     s.i2 = s.initial * 2;
     cout << "a2:" << s.i2 << endl;
-    
+    mulock(LOCK,&mut_cnt);
     cnt++;
     if(cnt == 3){
         mulock(UNLOCK,&mut_output);
     }
+    mulock(UNLOCK,&mut_cnt);
     
     mulock(UNLOCK,&mut_input);
 }
@@ -69,11 +72,12 @@ void* a3(void* args){
     s.i3 = s.initial * 3;
     cout << "a3:" << s.i3 << endl;
     
+    mulock(LOCK,&mut_cnt);
     cnt++;
     if(cnt == 3){
         mulock(UNLOCK,&mut_output);
     }
-    
+    mulock(UNLOCK,&mut_cnt);
     mulock(UNLOCK,&mut_input);
 }
 
@@ -85,9 +89,11 @@ void* io(void* args){
     cout << "stuck here  0" << endl;
     mulock(LOCK,&mut_output);
     
-    
+    mulock(LOCK,&mut_cnt);
     cout << "set counter 0" << endl;
     cnt = 0;
+    mulock(UNLOCK,&mut_cnt);
+    
     
     
     mulock(UNLOCK,&mut_output);
