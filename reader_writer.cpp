@@ -69,21 +69,21 @@ int main(){
     
     pthread_t thread_a1,thread_a2,thread_a3,thread_io;
     
-    if (pthread_create(&thread_io, NULL, &io, (void *)NULL) {
+    if (pthread_create(&thread_io, NULL, &io, (void *)NULL) ){
         puts("fail to create pthread thread_a3");
         exit(1);
     }
     
-    if (pthread_create(&thread_a1, NULL, &a1, (void *)NULL) {
+    if (pthread_create(&thread_a1, NULL, &a1, (void *)NULL)) {
         puts("fail to create pthread thread_a1");
         exit(1);
     }
         
-    if (pthread_create(&thread_a2, NULL, &a2, (void *)NULL) {
+    if (pthread_create(&thread_a2, NULL, &a2, (void *)NULL)) {
         puts("fail to create pthread thread_a2");
         exit(1);
     }
-    if (pthread_create(&thread_a3, NULL, &a3, (void *)NULL) {
+    if (pthread_create(&thread_a3, NULL, &a3, (void *)NULL) ){
         puts("fail to create pthread thread_a3");
         exit(1);
     }
