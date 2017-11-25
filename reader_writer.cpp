@@ -41,6 +41,7 @@ void* a1(void* args){
     
     //algorithm
     s.i1 = s.initial * 1;
+    sleep(2);
     
     mulock(LOCK,&mut_cnt);
     cnt++;
@@ -59,6 +60,7 @@ void* a2(void* args){
     
     //algorithm
     s.i2 = s.initial * 2;
+    sleep(1);
     
     mulock(LOCK,&mut_cnt);
     cnt++;
@@ -77,7 +79,7 @@ void* a3(void* args){
     
     //algorithm
     s.i3 = s.initial * 3;
-    
+    sleep(3);
     
     mulock(LOCK,&mut_cnt);
     cnt++;
@@ -108,8 +110,6 @@ void* io(void* args){
       
     
     mulock(UNLOCK,&mut_input);
-    
-    
     mulock(LOCK,&mut_output);
     
     // start your output here
