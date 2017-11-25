@@ -42,7 +42,7 @@ void* a1(void* args){
     
     //algorithm
     s.i1 = s.initial * 1;
-    usleep(2000);
+    sleep(2000);
     
     mulock(LOCK,&mut_cnt);
     cnt++;
@@ -61,7 +61,7 @@ void* a2(void* args){
     
     //algorithm
     s.i2 = s.initial * 2;
-    usleep(1000);
+    sleep(1000);
     
     mulock(LOCK,&mut_cnt);
     cnt++;
@@ -80,7 +80,7 @@ void* a3(void* args){
     
     //algorithm
     s.i3 = s.initial * 3;
-    usleep(3000);
+    sleep(3000);
     
     mulock(LOCK,&mut_cnt);
     cnt++;
