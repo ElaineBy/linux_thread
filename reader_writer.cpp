@@ -56,7 +56,7 @@ void* a3(void* args){
 }
 
 void* io(void* args){
-    cin << s.initial;
+    cin >> s.initial;
     
     mulock(UNLOCK,&mut_input);
     
