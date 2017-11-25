@@ -95,36 +95,36 @@ int main(){
     pthread_t thread_a1,thread_a2,thread_a3,thread_io;
     
     
-    if (pthread_create(&thread_io, NULL, &io, (void *)1) ){
+    if (pthread_create(&thread_io, NULL, &io, (void *)NULL) ){
         puts("fail to create pthread thread_a3");
         exit(1);
     }
     
-    if (pthread_create(&thread_a1, NULL, &a1, (void *)1)) {
+    if (pthread_create(&thread_a1, NULL, &a1, (void *)NULL)) {
         puts("fail to create pthread thread_a1");
         exit(1);
     }
-    if (pthread_join(thread_a1,(void*)NULL) == -1){
+    if (pthread_join(thread_a1,&(void*)NULL) == -1){
         puts("fail to recollect thread_a1");
         exit(1);
     }
         
-    if (pthread_create(&thread_a2, NULL, &a2, (void *)1)) {
+    if (pthread_create(&thread_a2, NULL, &a2, (void *)NULL)) {
         puts("fail to create pthread thread_a2");
         exit(1);
     }
         
-    if (pthread_join(thread_a2,(void*)NULL) == -1){
+    if (pthread_join(thread_a2,&(void*)NULL) == -1){
         puts("fail to recollect thread_a2");
         exit(1);
     }
         
-    if (pthread_create(&thread_a3, NULL, &a3, (void *)1) ){
+    if (pthread_create(&thread_a3, NULL, &a3, (void *)NULL) ){
         puts("fail to create pthread thread_a3");
         exit(1);
     }
         
-    if (pthread_join(thread_a3,(void*)NULL) == -1){
+    if (pthread_join(thread_a3,&(void*)NULL) == -1){
         puts("fail to recollect thread_a3");
         exit(1);
     }
